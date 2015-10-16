@@ -3,5 +3,9 @@ sudo: required
 services:
 - docker
 
+before_script:
+- pwd
+- ls -al
+
 script:
 - ./run.sh 
