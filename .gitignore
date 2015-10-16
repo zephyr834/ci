@@ -3,6 +3,9 @@
 ### Linux ###
 *~
 
+# Vim swap files 
+*.swp
+
 # KDE directory preferences
 .directory
 
