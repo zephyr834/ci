@@ -31,8 +31,8 @@ fi
 
 # Create OpenLDAP server.
 if [ ${#SLAPD_DOMAIN} -gt 0 -a ${#SLAPD_PASSWORD} -gt 0 ]; then
-#    source openldap-docker/createOpenLDAP.sh
-    call_create_script ${OPENLDAP_DIR} createOpenLDAP.sh
+    ${SCRIPT_DIR}/openldap-docker/createOpenLDAP.sh ${SLAPD_PASSWORD} ${SLAPD_DOMAIN} ${GERRIT_ADMIN_UID} ${GERRIT_ADMIN_PWD} ${GERRIT_ADMIN_EMAIL}
+#    call_create_script ${OPENLDAP_DIR} createOpenLDAP.sh
 fi
 
 # Create Gerrit server container.
