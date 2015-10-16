@@ -6,7 +6,7 @@ services:
 before_script:
 - pwd
 #- mkdir ${HOME}/ci/
-#- cp -ar ./* ${HOME}/*
+#- cp -ar ./* ${HOME}/ci/*
 #- cd ${HOME}/ci
 #- ls -al
 

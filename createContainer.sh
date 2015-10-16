@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
+BASEDIR=$(readlink -f $(dirname $0))
+
 # Add common variables.
-source ~/ci/config
-source ~/ci/config.default
+source ${BASEDIR}/config
+source ${BASEDIR}/config.default
 
 # Create Nexus server.
 if [ ${#NEXUS_WEBURL} -eq 0 ]; then
