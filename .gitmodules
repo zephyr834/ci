@@ -15,7 +15,7 @@
 	url = https://github.com/openfrontier/nginx-docker.git
 [submodule "img-scripts/openldap-docker"]
 	path = img-scripts/openldap-docker
-	url = https://github.com/openfrontier/openldap-docker.git
+	url = https://github.com/shivshav/openldap-docker.git
 [submodule "img-scripts/nexus-docker"]
 	path = img-scripts/nexus-docker
 	url = https://github.com/openfrontier/nexus-docker.git
