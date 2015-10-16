@@ -1,7 +1,8 @@
 #!/bin/bash
-set -e
 
 BASEDIR=$(readlink -f $(dirname $0))
+
+set -e
 
 source ${BASEDIR}/config
 source ${BASEDIR}/config.default

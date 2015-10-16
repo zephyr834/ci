@@ -1,8 +1,9 @@
 #!/bin/bash
-set -e
 
 BASEDIR=$(readlink -f $(dirname $0))
 SCRIPT_DIR=./img-scripts
+
+set -e
 
 # Add common variables.
 source ${BASEDIR}/config
