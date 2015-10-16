@@ -1,8 +1,10 @@
 #!/bin/bash
 set -e
 
-source ~/ci/config
-source ~/ci/config.default
+BASEDIR=$(readlink -f $(dirname $0))
+
+source ${BASEDIR}/config
+source ${BASEDIR}/config.default
 
 if [ ! -e "${SSH_KEY_PATH}" -o ! -e "${SSH_KEY_PATH}.pub" ]; then
   echo "Generating SSH keys..."
@@ -11,7 +13,7 @@ if [ ! -e "${SSH_KEY_PATH}" -o ! -e "${SSH_KEY_PATH}.pub" ]; then
   ssh-keygen -t rsa -N "" -f "${SSH_KEY_PATH}" -C ${GERRIT_ADMIN_EMAIL}
 fi
 
-~/ci/createContainer.sh ${SUFFIX}
+${BASEDIR}/createContainer.sh ${SUFFIX}
 while [ -z "$(docker logs ${GERRIT_NAME} 2>&1 | grep "Gerrit Code Review [0-9..]* ready")" ]; do
     echo "Waiting gerrit ready."
     sleep 1
@@ -28,7 +30,7 @@ while [ -z "$(docker logs ${REDMINE_NAME} 2>&1 | grep "INFO success: nginx enter
 done
 echo "Redmine is ready"
 #sleep 5
-~/ci/setupContainer.sh ${SUFFIX}
+${BASEDIR}/setupContainer.sh ${SUFFIX}
 #sleep 10
 while [ -n "$(docker logs ${JENKINS_NAME} 2>&1 | tail -n 5 | grep 'Running from: /usr/share/jenkins/jenkins.war')" -o \
         -z "$(docker logs ${JENKINS_NAME} 2>&1 | tail -n 5 | grep 'setting agent port for jnlp')" ]; do
@@ -37,6 +39,6 @@ while [ -n "$(docker logs ${JENKINS_NAME} 2>&1 | tail -n 5 | grep 'Running from:
 done
 echo "Jenkins is ready"
 #sleep 5
-~/ci/importDemoProject.sh ${SUFFIX}
+${BASEDIR}/importDemoProject.sh ${SUFFIX}
 
 echo ">>>> Everything is ready."

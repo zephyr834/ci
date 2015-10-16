@@ -5,10 +5,10 @@ services:
 
 before_script:
 - pwd
-- mkdir ${HOME}/ci/
-- cp -ar ./* ${HOME}/*
-- cd ${HOME}/ci
-- ls -al
+#- mkdir ${HOME}/ci/
+#- cp -ar ./* ${HOME}/*
+#- cd ${HOME}/ci
+#- ls -al
 
 script:
 - ./run.sh 
