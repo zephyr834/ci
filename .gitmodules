@@ -18,4 +18,4 @@
 	url = https://github.com/shivshav/openldap-docker.git
 [submodule "img-scripts/nexus-docker"]
 	path = img-scripts/nexus-docker
-	url = https://github.com/openfrontier/nexus-docker.git
+	url = https://github.com/shivshav/nexus-docker.git 
