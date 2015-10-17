@@ -44,8 +44,8 @@ call_create_script ${GERRIT_DIR} createGerrit.sh
 call_create_script ${JENKINS_DIR} createJenkins.sh
 
 # Create Redmine server container.
-#source ${SCRIPT_DIR}/redmine-docker/createRedmine.sh
-call_create_script ${REDMINE_DIR} createRedmine.sh
+${SCRIPT_DIR}/redmine-docker/createRedmine.sh ${PG_REDMINE_NAME} ${POSTGRES_IMAGE} ${REDMINE_NAME} ${REDMINE_IMAGE_NAME} ${REDMINE_VOLUME} ${GERRIT_VOLUME}
+#call_create_script ${REDMINE_DIR} createRedmine.sh
 
 # Create Nginx proxy server container.
 #source ${SCRIPT_DIR}/nginx-docker/createNginx.sh
