@@ -48,6 +48,6 @@ ${SCRIPT_DIR}/redmine-docker/createRedmine.sh ${PG_REDMINE_NAME} ${POSTGRES_IMAG
 #call_create_script ${REDMINE_DIR} createRedmine.sh
 
 # Create Nginx proxy server container.
-#source ${SCRIPT_DIR}/nginx-docker/createNginx.sh
-call_create_script ${NGINX_DIR} createNginx.sh
+${SCRIPT_DIR}/nginx-docker/createNginx.sh ${GERRIT_NAME} ${JENKINS_NAME} ${REDMINE_NAME} ${NEXUS_NAME} ${NGINX_IMAGE_NAME} ${NGINX_NAME}
+#call_create_script ${NGINX_DIR} createNginx.sh
 

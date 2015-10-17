@@ -1,14 +1,14 @@
+branches:
+  only:
+    - master
+    - develop
+
 sudo: required
 
 services:
 - docker
 
-before_script:
-- pwd
-#- mkdir ${HOME}/ci/
-#- cp -ar ./* ${HOME}/ci/*
-#- cd ${HOME}/ci
-#- ls -al
+#before_script:
 
 script:
 - ./run.sh 

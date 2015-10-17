@@ -12,7 +12,7 @@
 	url = https://github.com/shivshav/redmine-docker.git 
 [submodule "img-scripts/nginx-docker"]
 	path = img-scripts/nginx-docker
-	url = https://github.com/openfrontier/nginx-docker.git
+	url = https://github.com/shivshav/nginx-docker.git 
 [submodule "img-scripts/openldap-docker"]
 	path = img-scripts/openldap-docker
 	url = https://github.com/shivshav/openldap-docker.git
