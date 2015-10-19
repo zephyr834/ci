@@ -29,16 +29,10 @@
     docker pull openfrontier/openldap (Optional)
     docker pull sonatype/nexus (Optional)
 
-## Get scriptes.
+## Get scripts.
     cd ~
-    git clone https://github.com/openfrontier/gerrit-docker.git
-    git clone https://github.com/openfrontier/jenkins-docker.git
-    git clone https://github.com/openfrontier/jenkins-slave-docker.git
-    git clone https://github.com/openfrontier/redmine-docker.git
-    git clone https://github.com/openfrontier/nginx-docker.git
-    git clone https://github.com/openfrontier/ci.git
-    git clone https://github.com/openfrontier/openldap-docker.git (Optional)
-    git clone https://github.com/openfrontier/nginx-docker.git (Optional)
+    git submodule init
+    git submodule update
 
 ## Create all containers.
     ## Edit variables according to your environment.
