@@ -30,15 +30,15 @@
     docker pull sonatype/nexus (Optional)
 
 ## Get scripts.
-    cd ~
+    cd $PROJECT_ROOT
     git submodule init
     git submodule update
 
 ## Create all containers.
     ## Edit variables according to your environment.
-    vi ~/ci/config
+    vi $PROJECT_ROOT/config
     ## Start all containers.
-    ~/ci/run.sh
+    $PROJECT_ROOT/run.sh
 
 ## Access those services.
     ## Gerrit
@@ -55,9 +55,9 @@
 
 ## Stop and restart all containers.
     ## Stop all
-    ~/ci/stop.sh
+    $PROJECT_ROOT/stop.sh
     ## Restart all
-    ~/ci/start.sh
+    $PROJECT_ROOT/start.sh
 
 ## Upgrade containers.(Use with caution!)
     ## Upgrade Gerrit, Jenkins, Redmine, Nginx
