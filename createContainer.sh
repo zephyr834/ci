@@ -36,15 +36,15 @@ if [ ${#SLAPD_DOMAIN} -gt 0 -a ${#SLAPD_PASSWORD} -gt 0 ]; then
 fi
 
 # Create Gerrit server container.
-#source ${SCRIPT_DIR}/gerrit-docker/createGerrit.sh
-call_create_script ${GERRIT_DIR} createGerrit.sh
+${SCRIPT_DIR}/gerrit-docker/createGerrit.sh ${GERRIT_WEBURL} ${LDAP_NAME} ${LDAP_ACCOUNTBASE} ${HTTPD_LISTENURL}
+#call_create_script ${GERRIT_DIR} createGerrit.sh
 
 # Create Jenkins server container.
 #source ${SCRIPT_DIR}/jenkins-docker/createJenkins.sh
 call_create_script ${JENKINS_DIR} createJenkins.sh
 
 # Create Redmine server container.
-${SCRIPT_DIR}/redmine-docker/createRedmine.sh ${PG_REDMINE_NAME} ${POSTGRES_IMAGE} ${REDMINE_NAME} ${REDMINE_IMAGE_NAME} ${REDMINE_VOLUME} ${GERRIT_VOLUME}
+${SCRIPT_DIR}/redmine-docker/createRedmine.sh ${PG_REDMINE_NAME} ${POSTGRES_IMAGE_NAME} ${REDMINE_NAME} ${REDMINE_IMAGE_NAME} ${REDMINE_VOLUME} ${GERRIT_VOLUME} ${LDAP_NAME} ${LDAP_ACCOUNTBASE}
 #call_create_script ${REDMINE_DIR} createRedmine.sh
 
 # Create Nginx proxy server container.

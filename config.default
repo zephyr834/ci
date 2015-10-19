@@ -11,6 +11,9 @@ if [ ${#SLAPD_DOMAIN} -gt 0 -a ${#SLAPD_PASSWORD} -gt 0 ]; then
     LDAP_ACCOUNTBASE="ou=accounts$(echo .${SLAPD_DOMAIN} | sed 's/\./,dc=/g')"
 fi
 
+# Postgres container configuration
+POSTGRES_IMAGE_NAME=${POSTGRES_IMAGE_NAME:-postgres}
+
 ## Gerrit administrator's ssh key
 SSH_KEY_PATH=${SSH_KEY_PATH:-~/.ssh/id_rsa}
 
