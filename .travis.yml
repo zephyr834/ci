@@ -1,0 +1,15 @@
+branches:
+  only:
+    - master
+    - develop
+    - travis-spinup
+
+sudo: required
+
+services:
+- docker
+
+#before_script:
+
+script:
+- ./run.sh 
