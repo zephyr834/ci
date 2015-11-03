@@ -6,7 +6,7 @@
 	url = https://github.com/openfrontier/jenkins-slave-docker.git
 [submodule "img-scripts/jenkins-docker"]
 	path = img-scripts/jenkins-docker
-	url = https://github.com/openfrontier/jenkins-docker.git
+	url = https://github.com/shivshav/jenkins-docker.git
 [submodule "img-scripts/redmine-docker"]
 	path = img-scripts/redmine-docker
 	url = https://github.com/shivshav/redmine-docker.git 
