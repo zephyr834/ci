@@ -22,8 +22,7 @@ GERRIT_NAME=gerrit${SUFFIX}
 GERRIT_VOLUME=gerrit-volume${SUFFIX}
 PG_GERRIT_NAME=pg-gerrit${SUFFIX}
 
-#Gerrit checkout dir
-CHECKOUT_DIR=./git
+
 ## Gerrit access hostname
 GERRIT_WEBURL=http://${HOST_NAME}/${GERRIT_NAME}
 HTTPD_LISTENURL=proxy-http://*:8080/${GERRIT_NAME}

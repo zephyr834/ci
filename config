@@ -15,7 +15,7 @@ SLAPD_PASSWORD=secret
 LDAP_SERVER=127.0.0.1
 ## LDAP account baseDN
 LDAP_ACCOUNTBASE=ou=accounts,dc=demo,dc=com
-
+LDAP_OU_ACCOUNTS=ou=accounts
 ## Gerrit administrator's uid in LDAP
 GERRIT_ADMIN_UID=admin
 GERRIT_ADMIN_PWD=passwd
