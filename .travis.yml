@@ -3,6 +3,28 @@
 #    - master
 #    - develop
 #    - travis-spinup
+env:
+# Submodules are defaulted to use shiv's repo versions
+# Define these variables for any projects that you want pulled from your forked
+# repo as opposed to the default submodule path i.e.
+# Set JENKINS_URL=https://github.com/<your-username>/jenkins-docker.git to pull your fork with your latest changes and 
+# use JENKINS_BRANCH=my-feature to use the my-feature branch from your fork for the build test
+- OPENLDAP_URL=
+- OPENLDAP_BRANCH=
+- REDMINE_URL=
+- REDMINE_BRANCH=
+- JENKINS_URL=
+- JENKINS_BRANCH=
+- JENKINS_SLAVE_URL=
+- JENKINS_SLAVE_BRANCH=
+- GERRIT_URL=
+- GERRIT_BRANCH=
+- NEXUS_URL=
+- NEXUS_BRANCH=
+- DOKUWIKI_URL=
+- DOKUWIKI_BRANCH=
+- NGINX_URL=
+- NGINX_BRANCH=
 
 sudo: required
 
@@ -13,11 +35,13 @@ git:
   submodules: false
 
 before_install:
+- travis-submodules.sh
   # Change the first 2 lines to ensure the test environment pulls your latest changes down
-  - git config --file=.gitmodules submodule.img-scripts/jenkins-docker.url https://github.com/hipapi/jenkins-docker.git 
-  - git config --file=.gitmodules submodule.img-scripts/jenkins-docker.branch master
-  - git submodule sync
-  - git submodule update --recursive --init --remote
+#  - git config --file=.gitmodules submodule.img-scripts/jenkins-docker.url https://github.com/hipapi/jenkins-docker.git 
+#  - git config --file=.gitmodules submodule.img-scripts/jenkins-docker.branch master
+#  - git submodule sync
+#  - git submodule update --recursive --init --remote
+  - 
 #before_script:
 
 script:
