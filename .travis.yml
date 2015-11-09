@@ -15,10 +15,10 @@
 #  - git submodule update --recursive --init --remote
   - 
 before_script:
-- ./travis-submodules.sh
+  - ./travis-submodules.sh
 
 script:
-- ./run.sh 
+  - ./run.sh 
 
 #branches:
 #  only:
