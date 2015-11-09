@@ -37,7 +37,7 @@ git:
   submodules: false
 
 before_install:
-- travis-submodules.sh
+- ./travis-submodules.sh
   # Change the first 2 lines to ensure the test environment pulls your latest changes down
 #  - git config --file=.gitmodules submodule.img-scripts/jenkins-docker.url https://github.com/hipapi/jenkins-docker.git 
 #  - git config --file=.gitmodules submodule.img-scripts/jenkins-docker.branch master
