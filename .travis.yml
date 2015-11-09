@@ -3,8 +3,8 @@
 #services:
 #  - docker
 
-git:
-  submodules: false
+#git:
+#  submodules: false
 
 before_install:
 - ./travis-submodules.sh
