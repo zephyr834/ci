@@ -1,3 +1,21 @@
+env:
+  global:
+  - OPENLDAP_URL=
+  - OPENLDAP_BRANCH=
+  - REDMINE_URL=
+  - REDMINE_BRANCH=
+  - JENKINS_URL=
+  - JENKINS_BRANCH=
+  - JENKINS_SLAVE_URL=
+  - JENKINS_SLAVE_BRANCH=
+  - GERRIT_URL=
+  - GERRIT_BRANCH=
+  - NEXUS_URL=
+  - NEXUS_BRANCH=
+  - DOKUWIKI_URL=
+  - DOKUWIKI_BRANCH=
+  - NGINX_URL=
+  - NGINX_BRANCH=
 sudo: required
 services:
   - docker
@@ -31,22 +49,4 @@ script:
 # repo as opposed to the default submodule path i.e.
 # Set JENKINS_URL=https://github.com/<your-username>/jenkins-docker.git to pull your fork with your latest changes and 
 # use JENKINS_BRANCH=my-feature to use the my-feature branch from your fork for the build test
-#env:
-#  global:
-#  - OPENLDAP_URL=
-#  - OPENLDAP_BRANCH=
-#  - REDMINE_URL=
-#  - REDMINE_BRANCH=
-#  - JENKINS_URL=
-#  - JENKINS_BRANCH=
-#  - JENKINS_SLAVE_URL=
-#  - JENKINS_SLAVE_BRANCH=
-#  - GERRIT_URL=
-#  - GERRIT_BRANCH=
-#  - NEXUS_URL=
-#  - NEXUS_BRANCH=
-#  - DOKUWIKI_URL=
-#  - DOKUWIKI_BRANCH=
-#  - NGINX_URL=
-#  - NGINX_BRANCH=
 

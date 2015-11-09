@@ -29,7 +29,7 @@ NGINX_BRANCH=${NGINX_BRANCH}
 
 set_submodule(){ # (submodule_directory_name, submodule_url, [submodule_branch])
     # We need 2-3 arguments to the script
-    if [ $# -lt 2 || $# -gt 3 ]; then
+    if [[ $# -lt 2 || $# -gt 3 ]]; then
         >&2 echo "Incorrect number of arguments provided to submodule config"
         exit 1
     fi
