@@ -58,7 +58,7 @@ if [ ${TRAVIS_PULL_REQUEST} ]; then
     set_submodule openldap-docker ${OPENLDAP_URL} ${OPENLDAP_BRANCH}
     set_submodule redmine-docker ${REDMINE_URL} ${REDMINE_BRANCH}
     set_submodule jenkins-docker ${JENKINS_URL} ${JENKINS_BRANCH}
-    set_submodule jenkins-slave-docker ${JENKINS_SLAVE_URL} ${JENKINS_SLAVE_URL}
+    set_submodule jenkins-slave-docker ${JENKINS_SLAVE_URL} ${JENKINS_SLAVE_BRANCH}
     set_submodule gerrit-docker ${GERRIT_URL} ${GERRIT_BRANCH}
     set_submodule nexus-docker ${NEXUS_URL} ${NEXUS_BRANCH}
 #    set_submodule dokuwiki-docker ${DOKUWIKI_URL} ${DOKUWIKI_BRANCH}
