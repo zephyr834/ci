@@ -3,6 +3,7 @@
 # Exit on any command that exits with exit code != 0
 set -e
 
+# Initially, set any URLs from the environment variables provided if given
 OPENLDAP_URL=${OPENLDAP_URL:-https://github.com/shivshav/openldap-docker.git}
 OPENLDAP_BRANCH=${OPENLDAP_BRANCH}
 
@@ -54,6 +55,38 @@ set_submodule(){ # (submodule_directory_name, submodule_url, [submodule_branch])
 }
 
 
+# If it isn't a pull request, manually reset all submodules to default repos and branches
+# This will tolerate any residual environment variables set in merged pull requests
+if [[ "${TRAVIS_PULL_REQUEST}" = "false" || -z "${TRAVIS_PULL_REQUEST}" ]]; then
+   
+    echo "Not a pull request, using default repositories..."
+    
+    OPENLDAP_URL=https://github.com/shivshav/openldap-docker.git
+    unset OPENLDAP_BRANCH
+    
+    REDMINE_URL=https://github.com/shivshav/redmine-docker.git
+    unset REDMINE_BRANCH
+    
+    JENKINS_URL=https://github.com/shivshav/jenkins-docker.git
+    unset JENKINS_BRANCH
+    
+    JENKINS_SLAVE_URL=https://github.com/openfrontier/jenkins-slave-docker.git
+    unset JENKINS_SLAVE_BRANCH
+    
+    GERRIT_URL=https://github.com/shivshav/gerrit-docker.git
+    unset GERRIT_BRANCH
+    
+    NEXUS_URL=https://github.com/shivshav/nexus-docker.git
+    unset NEXUS_BRANCH
+    
+    DOKUWIKI_URL=https://github.com/shivshav/dokuwiki-docker.git
+    unset DOKUWIKI_BRANCH
+    
+    NGINX_URL=https://github.com/shivshav/nginx-docker.git
+    unset NGINX_BRANCH
+
+fi
+
 # Do submodule config stuff
 set_submodule openldap-docker ${OPENLDAP_URL} ${OPENLDAP_BRANCH}
 set_submodule redmine-docker ${REDMINE_URL} ${REDMINE_BRANCH}
@@ -65,15 +98,6 @@ set_submodule nexus-docker ${NEXUS_URL} ${NEXUS_BRANCH}
 set_submodule nginx-docker ${NGINX_URL} ${NGINX_BRANCH}
 
 
-# If we are building a pull-request, use the developer-provided submodule
-# This way, even if travis.yml contains env variables set by the developer
-# we can circumvent the changes if necessary
-if [ "${TRAVIS_PULL_REQUEST}" = "true" ]; then
-
-    # Finally update the submodule from the new remotes
-    git submodule update --init --recursive --remote
-    echo "Submodule updated!"
-else
-    echo "Not a pull request, using default repositories..."
-    git submodule update --init --recursive
-fi
+# Finally update the submodule from the configured remotes
+git submodule update --init --recursive --remote
+echo "Submodules updated!"
