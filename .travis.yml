@@ -14,8 +14,8 @@
 #  - git submodule sync
 #  - git submodule update --recursive --init --remote
   - 
-before_script:
-  - ./travis-submodules.sh
+#before_script:
+#  - ./travis-submodules.sh
 
 script:
   - ./run.sh 
