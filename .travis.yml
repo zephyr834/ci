@@ -2,13 +2,11 @@ sudo: required
 services:
   - docker
 language: bash
+git:
+  submodules: false
 script:
   - ./run.sh 
-#services:
-#  - docker
 
-#git:
-#  submodules: false
 
 #before_install:
 #
