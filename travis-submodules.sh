@@ -39,10 +39,11 @@ set_submodule(){ # (submodule_directory_name, submodule_url, [submodule_branch])
     SUBMODULE_BRANCH=$3
     # Set the new submodule URL
     git config --file=.gitmodules submodule.img-scripts/${SUBMODULE_DIR}.url ${SUBMODULE_URL}
-
+    echo "Set submodule for ${SUBMODULE_DIR} to ${SUBMODULE_URL}"
     # Set the submodule branch if provided
     if [ -z ${SUBMODULE_BRANCH} ]; then
         git config --file=.gitmodules submodule.img-scripts/${SUBMODULE_DIR}.branch ${SUBMODULE_BRANCH}
+        echo "Set branch for ${SUBMODULE_DIR} to ${SUBMODULE_BRANCH}"
     fi
 }
 
@@ -51,6 +52,7 @@ set_submodule(){ # (submodule_directory_name, submodule_url, [submodule_branch])
 # we can circumvent the changes if necessary
 if [ ${TRAVIS_PULL_REQUEST} ]; then
     # Do submodule config stuff
+    echo "We are building a pull request, setting custom submodules..."
     set_submodule openldap-docker ${OPENLDAP_URL} ${OPENLDAP_BRANCH}
     set_submodule redmine-docker ${REDMINE_URL} ${REDMINE_BRANCH}
     set_submodule jenkins-docker ${JENKINS_URL} ${JENKINS_BRANCH}
@@ -64,5 +66,6 @@ if [ ${TRAVIS_PULL_REQUEST} ]; then
     git submodule update --init --recursive --remote
 
 else
+    echo "Not a pull request, setting submodules to default repositories..."
     git submodule update --init --recursive
 fi
