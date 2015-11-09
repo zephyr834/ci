@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Exit on any error
-set -ev
+# Exit on any command that exits with exit code != 0
+set -e
 
 OPENLDAP_URL=${OPENLDAP_URL:-https://github.com/shivshav/openldap-docker.git}
 OPENLDAP_BRANCH=${OPENLDAP_BRANCH}
@@ -41,33 +41,39 @@ set_submodule(){ # (submodule_directory_name, submodule_url, [submodule_branch])
     git config --file=.gitmodules submodule.img-scripts/${SUBMODULE_DIR}.url ${SUBMODULE_URL}
     echo "Set submodule for ${SUBMODULE_DIR} to ${SUBMODULE_URL}"
     # Set the submodule branch if provided
-    if [[ -n ${SUBMODULE_BRANCH} ]]; then
+    if [ -n "$SUBMODULE_BRANCH" ]; then
         git config --file=.gitmodules submodule.img-scripts/${SUBMODULE_DIR}.branch ${SUBMODULE_BRANCH}
         echo "Set branch for ${SUBMODULE_DIR} to ${SUBMODULE_BRANCH}"
-    else
+    else # unset otherwise
+        # If no branch was set, the command exits with code 5, which we don't care about so we reset 'set -e'
+        set +e 
+        git config --file=.gitmodules --unset-all submodule.img-scripts/${SUBMODULE_DIR}.branch
         echo "No branch specified. Using default branch"
+        set -e
     fi
 }
+
+
+# Do submodule config stuff
+set_submodule openldap-docker ${OPENLDAP_URL} ${OPENLDAP_BRANCH}
+set_submodule redmine-docker ${REDMINE_URL} ${REDMINE_BRANCH}
+set_submodule jenkins-docker ${JENKINS_URL} ${JENKINS_BRANCH}
+set_submodule jenkins-slave-docker ${JENKINS_SLAVE_URL} ${JENKINS_SLAVE_BRANCH}
+set_submodule gerrit-docker ${GERRIT_URL} ${GERRIT_BRANCH}
+set_submodule nexus-docker ${NEXUS_URL} ${NEXUS_BRANCH}
+#set_submodule dokuwiki-docker ${DOKUWIKI_URL} ${DOKUWIKI_BRANCH} FOR FUTURE USE
+set_submodule nginx-docker ${NGINX_URL} ${NGINX_BRANCH}
+
 
 # If we are building a pull-request, use the developer-provided submodule
 # This way, even if travis.yml contains env variables set by the developer
 # we can circumvent the changes if necessary
-if [ ${TRAVIS_PULL_REQUEST} ]; then
-    # Do submodule config stuff
-    echo "We are building a pull request, setting custom submodules..."
-    set_submodule openldap-docker ${OPENLDAP_URL} ${OPENLDAP_BRANCH}
-    set_submodule redmine-docker ${REDMINE_URL} ${REDMINE_BRANCH}
-    set_submodule jenkins-docker ${JENKINS_URL} ${JENKINS_BRANCH}
-    set_submodule jenkins-slave-docker ${JENKINS_SLAVE_URL} ${JENKINS_SLAVE_BRANCH}
-    set_submodule gerrit-docker ${GERRIT_URL} ${GERRIT_BRANCH}
-    set_submodule nexus-docker ${NEXUS_URL} ${NEXUS_BRANCH}
-#    set_submodule dokuwiki-docker ${DOKUWIKI_URL} ${DOKUWIKI_BRANCH}
-    set_submodule nginx-docker ${NGINX_URL} ${NGINX_BRANCH}
+if [ "${TRAVIS_PULL_REQUEST}" = "true" ]; then
 
-    # Finally update the submodules
+    # Finally update the submodule from the new remotes
     git submodule update --init --recursive --remote
-
+    echo "Submodule updated!"
 else
-    echo "Not a pull request, setting submodules to default repositories..."
+    echo "Not a pull request, using default repositories..."
     git submodule update --init --recursive
 fi
