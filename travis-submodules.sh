@@ -44,6 +44,8 @@ set_submodule(){ # (submodule_directory_name, submodule_url, [submodule_branch])
     if [[ -z ${SUBMODULE_BRANCH} ]]; then
         git config --file=.gitmodules submodule.img-scripts/${SUBMODULE_DIR}.branch ${SUBMODULE_BRANCH}
         echo "Set branch for ${SUBMODULE_DIR} to ${SUBMODULE_BRANCH}"
+    else
+        echo "No branch specified. Using default branch"
     fi
 }
 
