@@ -50,7 +50,7 @@ set_submodule(){ # (submodule_directory_name, submodule_url, [submodule_branch])
 # If we are building a pull-request, use the developer-provided submodule
 # This way, even if travis.yml contains env variables set by the developer
 # we can circumvent the changes if necessary
-if [ ${TRAVIS_PULL_REQUEST} = "true" ]; then
+if [ ${TRAVIS_PULL_REQUEST} ]; then
     # Do submodule config stuff
     echo "We are building a pull request, setting custom submodules..."
     set_submodule openldap-docker ${OPENLDAP_URL} ${OPENLDAP_BRANCH}
