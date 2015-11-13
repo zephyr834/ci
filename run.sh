@@ -40,6 +40,6 @@ while [ -n "$(docker logs ${JENKINS_NAME} 2>&1 | tail -n 5 | grep 'Running from:
 done
 echo "Jenkins is ready"
 #sleep 5
-${BASEDIR}/importDemoProject.sh ${SUFFIX}
+#${BASEDIR}/importDemoProject.sh ${SUFFIX}
 
 echo ">>>> Everything is ready."
