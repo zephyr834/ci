@@ -22,6 +22,11 @@ ${SCRIPT_DIR}/jenkins-docker/setupJenkins.sh ${GERRIT_ADMIN_UID} ${GERRIT_ADMIN_
 echo ">>>> Setup Redmine."
 ${SCRIPT_DIR}/redmine-docker/setupRedmine.sh
 
+#Integrate DokuWiki with Openldap and import init data.
+echo ">>>> Setup DokuWiki."
+${SCRIPT_DIR}/dokuwiki-docker/setupDokuWiki.sh ${DOKUWIKI_NAME} ${LDAP_NAME} ${LDAP_ACCOUNTBASE} 
+
+
 #Restart Nginx proxy.
 echo ">>>> Restart Nginx proxy."
 docker restart ${NGINX_NAME}
