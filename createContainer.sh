@@ -39,7 +39,7 @@ fi
 ${SCRIPT_DIR}/gerrit-docker/createGerrit.sh ${GERRIT_WEBURL} ${LDAP_NAME} ${LDAP_ACCOUNTBASE} ${HTTPD_LISTENURL}
 
 # Create Jenkins server container.
-${SCRIPT_DIR}/jenkins-docker/createJenkins.sh ${JENKINS_NAME} ${JENKINS_VOLUME} ${GERRIT_NAME} ${JENKINS_IMAGE_NAME} ${JENKINS_OPTS} ${TIMEZONE}
+${SCRIPT_DIR}/jenkins-docker/createJenkins.sh ${JENKINS_NAME} ${JENKINS_VOLUME} ${LDAP_NAME} ${GERRIT_NAME} ${JENKINS_IMAGE_NAME} ${JENKINS_OPTS} ${TIMEZONE}
 
 # Create Redmine server container.
 ${SCRIPT_DIR}/redmine-docker/createRedmine.sh ${PG_REDMINE_NAME} ${POSTGRES_IMAGE_NAME} ${REDMINE_NAME} ${REDMINE_IMAGE_NAME} ${REDMINE_VOLUME} ${GERRIT_VOLUME} ${LDAP_NAME} ${LDAP_ACCOUNTBASE}
@@ -48,5 +48,5 @@ ${SCRIPT_DIR}/redmine-docker/createRedmine.sh ${PG_REDMINE_NAME} ${POSTGRES_IMAG
 ${SCRIPT_DIR}/dokuwiki-docker/createDokuWiki.sh ${DOKUWIKI_NAME} ${DOKUWIKI_VOLUME} ${DOKUWIKI_IMAGE_NAME} ${LDAP_NAME}
 
 # Create Nginx proxy server container.
-${SCRIPT_DIR}/nginx-docker/createNginx.sh ${HOST_NAME} ${GERRIT_NAME} ${JENKINS_NAME} ${REDMINE_NAME} ${NEXUS_NAME} ${DOKUWIKI_NAME} ${NGINX_IMAGE_NAME} ${NGINX_NAME}
+${SCRIPT_DIR}/nginx-docker/createNginx.sh ${HOST_NAME} ${GERRIT_NAME} ${JENKINS_NAME} ${REDMINE_NAME} ${NEXUS_NAME} ${DOKUWIKI_NAME} ${NGINX_IMAGE_NAME} ${NGINX_NAME} ${LDAP_NAME} ${SLAPD_DOMAIN} ${SLAPD_PASSWORD}
 
