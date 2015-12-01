@@ -40,7 +40,7 @@ ${SCRIPT_DIR}/gerrit-docker/createGerrit.sh ${GERRIT_WEBURL} ${LDAP_NAME} ${LDAP
 #call_create_script ${GERRIT_DIR} createGerrit.sh
 
 # Create Jenkins server container.
-${SCRIPT_DIR}/jenkins-docker/createJenkins.sh ${JENKINS_NAME} ${JENKINS_VOLUME} ${GERRIT_NAME} ${JENKINS_IMAGE_NAME} ${JENKINS_OPTS} ${TIMEZONE}
+${SCRIPT_DIR}/jenkins-docker/createJenkins.sh ${JENKINS_NAME} ${JENKINS_VOLUME} ${LDAP_NAME} ${GERRIT_NAME} ${JENKINS_IMAGE_NAME} ${JENKINS_OPTS} ${TIMEZONE}
 
 # Create Redmine server container.
 ${SCRIPT_DIR}/redmine-docker/createRedmine.sh ${PG_REDMINE_NAME} ${POSTGRES_IMAGE_NAME} ${REDMINE_NAME} ${REDMINE_IMAGE_NAME} ${REDMINE_VOLUME} ${GERRIT_VOLUME} ${LDAP_NAME} ${LDAP_ACCOUNTBASE}
