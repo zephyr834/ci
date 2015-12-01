@@ -14,8 +14,8 @@ env:
   - NEXUS_BRANCH=
   - DOKUWIKI_URL=
   - DOKUWIKI_BRANCH=
-  - NGINX_URL=https://github.com/cgudea/nginx-docker.git
-  - NGINX_BRANCH=master
+  - NGINX_URL=
+  - NGINX_BRANCH=
 sudo: required
 services:
   - docker
