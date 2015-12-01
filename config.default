@@ -53,8 +53,8 @@ PG_REDMINE_NAME=pg-redmine${SUFFIX}
 REDMINE_IMAGE_NAME=${REDMINE_IMAGE_NAME:-sameersbn/redmine}
 
 ## DokuWiki configs
-DOKUWIKI_NAME=wiki${SUFFIX}
-DOKUWIKI_VOLUME=wiki-volume${SUFFIX}
+DOKUWIKI_NAME=dokuwiki${SUFFIX}
+DOKUWIKI_VOLUME=dokuwiki-volume${SUFFIX}
 DOKUWIKI_IMAGE_NAME=istepanov/dokuwiki${SUFFIX}
 
 ## Nginx docker container's name

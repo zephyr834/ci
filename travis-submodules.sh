@@ -99,5 +99,5 @@ set_submodule nginx-docker ${NGINX_URL} ${NGINX_BRANCH}
 
 
 # Finally update the submodule from the configured remotes
-git submodule update --init --recursive --remote
+git submodule update --init --recursive
 echo "Submodules updated!"
