@@ -22,6 +22,7 @@ GERRIT_NAME=gerrit${SUFFIX}
 GERRIT_VOLUME=gerrit-volume${SUFFIX}
 PG_GERRIT_NAME=pg-gerrit${SUFFIX}
 
+
 ## Gerrit access hostname
 GERRIT_WEBURL=http://${HOST_NAME}/${GERRIT_NAME}
 HTTPD_LISTENURL=proxy-http://*:8080/${GERRIT_NAME}
@@ -57,11 +58,16 @@ PHPLDAPADMIN_NAME=phpldapadmin${SUFFIX}
 #PhpLDAP Admin docker image's name
 PHPLDAP_IMAGE_NAME=${PHPLDAP_IMAGE_NAME:-osixia/phpldapadmin}
 
+## DokuWiki configs
+DOKUWIKI_NAME=dokuwiki${SUFFIX}
+DOKUWIKI_VOLUME=dokuwiki-volume${SUFFIX}
+DOKUWIKI_IMAGE_NAME=istepanov/dokuwiki${SUFFIX}
+
 ## Nginx docker container's name
 NGINX_NAME=proxy
 
 ## Nginx docker image's name
-NGINX_IMAGE_NAME=${NGINX_IMAGE_NAME:-nginx}
+NGINX_IMAGE_NAME=${NGINX_IMAGE_NAME:-h3nrik/nginx-ldap}
 
 ## Nginx file upload limit.
 NGINX_MAX_UPLOAD_SIZE=${NGINX_MAX_UPLOAD_SIZE:-200m}
@@ -86,3 +92,6 @@ LDAP_VOLUME=openldap-volume
 
 ## Openldap image's name.
 LDAP_IMAGE_NAME=${LDAP_IMAGE_NAME:-openfrontier/openldap}
+
+##Timezon
+TIME_ZONE=america/los_angeles
