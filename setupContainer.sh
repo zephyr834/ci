@@ -22,10 +22,13 @@ ${SCRIPT_DIR}/jenkins-docker/setupJenkins.sh ${GERRIT_ADMIN_UID} ${GERRIT_ADMIN_
 echo ">>>> Setup Redmine."
 ${SCRIPT_DIR}/redmine-docker/setupRedmine.sh
 
+# Add Nexus configuration files and do general Nexus setup
+echo ">>>> Setup Nexus."
+${SCRIPT_DIR}/nexus-docker/setupNexus.sh ${LDAP_NAME} ${SLAPD_DOMAIN} ${LDAP_ACCOUNTBASE} ${NEXUS_NAME}
+
 #Integrate DokuWiki with Openldap and import init data.
 echo ">>>> Setup DokuWiki."
 ${SCRIPT_DIR}/dokuwiki-docker/setupDokuWiki.sh ${DOKUWIKI_NAME} ${LDAP_NAME} ${LDAP_ACCOUNTBASE} 
-
 
 #Restart Nginx proxy.
 echo ">>>> Restart Nginx proxy."
